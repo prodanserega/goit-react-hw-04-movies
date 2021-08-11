@@ -1,9 +1,22 @@
-import PageHeading from '../components/PageHeading/PageHeading';
+import { useState, useEffect } from "react";
 
-export default function Home(){
-    return(
-        <>
-        <PageHeading text="Trending today"/>
-        </>
-    )
-}
+import PageHeading from "../components/PageHeading/PageHeading";
+import MoviesList from "../components/MoviesList/MoviesList";
+import { getTrendingMovies } from "../services/Api";
+
+const Home = () => {
+  const [movies, setMovies] = useState(null);
+
+  useEffect(() => {
+    getTrendingMovies().then(({ results }) => setMovies(results));
+  }, []);
+
+  return (
+    <>
+      <PageHeading text="Trending today" />
+      {movies && <MoviesList movies={movies} />}
+    </>
+  );
+};
+
+export default Home;
