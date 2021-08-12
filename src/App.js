@@ -1,18 +1,28 @@
-import { Switch, Route } from 'react-router-dom';
-import AppBar from './components/AppBar/AppBar';
-import Container from './components/Container/Container';
-import Home from './views/Home';
+import { Switch, Route } from "react-router-dom";
+import AppBar from "./components/AppBar/AppBar";
+import Container from "./components/Container/Container";
+import Home from "./views/Home";
+import MoviesPage from "./views/MoviesPage";
+import Movie from "./views/Movie/Movie";
 
 export default function App() {
   return (
     <Container>
-    <AppBar />
+      <AppBar />
 
-    <Switch>
+      <Switch>
         <Route path="/" exact>
           <Home />
         </Route>
-     </Switch>
+
+        <Route exact>
+          <MoviesPage />
+        </Route>
+
+        <Route>
+          <Movie />
+        </Route>
+      </Switch>
     </Container>
   );
 }

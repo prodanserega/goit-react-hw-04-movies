@@ -3,12 +3,16 @@ import { toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
-const KEY = "053386d3f650ced58f98586754740b55";
-const BASE_URL = "https://api.themoviedb.org/3";
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
+axios.defaults.params = {
+  api_key: "e0f5a2b3f12c3f7ea9352edce7e33432",
+
+  page: 1,
+};
 
 async function getTrendingMovies() {
   const { data } = await axios
-    .get(`${BASE_URL}/trending/movie/day?api_key=${KEY}`)
+    .get(`/trending/movie/day?`)
     .then((data) => data)
     .catch(function (error) {
       toast.error(error);
@@ -18,9 +22,7 @@ async function getTrendingMovies() {
 
 async function getBySearchMovies(searchQuery, page = 1) {
   const { data } = await axios
-    .get(
-      `${BASE_URL}/search/movie?api_key=${KEY}&query=${searchQuery}&page=${page}include_adult=false`
-    )
+    .get(`/search/movie?`)
     .then((data) => data)
     .catch(function (error) {
       toast.error(error);
@@ -30,7 +32,7 @@ async function getBySearchMovies(searchQuery, page = 1) {
 
 async function getMovieDetails(movieId) {
   const { data } = await axios
-    .get(`${BASE_URL}/movie/${movieId}?api_key=${KEY}&language=en-US`)
+    .get(`/movie/${movieId}`)
     .then((data) => data)
     .catch(function (error) {
       toast.error(error);
@@ -40,7 +42,7 @@ async function getMovieDetails(movieId) {
 
 async function getCastMovies(movieId) {
   const { data } = await axios
-    .get(`${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}&language=en-US`)
+    .get(`/movie/${movieId}/credits`)
     .then((data) => data);
 
   return data.cast;
@@ -48,9 +50,7 @@ async function getCastMovies(movieId) {
 
 async function getReviewsMovies(movieId, page = 1) {
   const { data } = await axios
-    .get(
-      `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=en-US&page=${page}`
-    )
+    .get(`/movie/${movieId}/reviews`)
     .then((data) => data);
 
   return data.results;

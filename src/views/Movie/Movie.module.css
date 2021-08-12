@@ -1,0 +1,12 @@
+.btn {
+  margin-bottom: 15px;
+  padding: 5px;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  color: green;
+}
