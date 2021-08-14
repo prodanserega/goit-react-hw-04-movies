@@ -54,7 +54,7 @@ async function getCastMovies(movieId) {
 async function getReviewsMovies(movieId) {
   const { data } = await axios
     .get(`/movie/${movieId}/reviews`)
-    .then((data) => data);
+    .then((data) => data); 
 
   return data.results;
 }
