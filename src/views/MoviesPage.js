@@ -1,37 +1,36 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { getBySearchMovies } from "../services/Api";
+import { getBySearchMovies } from "../../src/services/Api";
 
 import MoviesList from "../components/MoviesList/MoviesList";
 import SearchBar from "../components/SearchMovies/SearchMovies";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState(null);
-  const [value, setValue] = useState("");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    if (!value) {
+    if (!query) {
       return;
     }
-    getBySearchMovies(value).then(({ results }) => {
+    getBySearchMovies(query).then(({ results }) => {
       if (results.length === 0) {
-        toast.error("There are no results. Try another value");
+        toast.error("There are no results. Try another query");
         return;
       }
       setMovies(results);
-      toast.success("Movies on your value");
+      toast.success("Movies on your query");
     });
-  }, [value]);
-
-  const onSubmit = (value) => {
-    setValue(value);
+  }, [query]);
+  console.log(getBySearchMovies);
+  const onSubmit = (query) => {
+    setQuery(query);
     setMovies([]);
   };
 
   return (
     <>
       <SearchBar onSubmit={onSubmit} />
-
       {movies && <MoviesList movies={movies} />}
     </>
   );

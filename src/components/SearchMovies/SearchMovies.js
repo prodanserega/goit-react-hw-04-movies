@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 import s from "../SearchMovies/SearchMovies.module.css";
 
 export default function SearchBar({ onSubmit }) {
-  const [value, setValue] = useState("");
-
+  const [query, setQuery] = useState("");
   const handleNameChange = (event) => {
-    setValue(event.target.value.toLowerCase());
+    setQuery(event.target.value.toLowerCase());
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (value.trim() === "") {
-      toast.error("Enter your value");
+    if (query.trim() === "") {
+      toast.error("Enter your query");
       return;
     }
-    onSubmit(value);
-    setValue("");
+    onSubmit(query);
+    setQuery("");
   };
 
   return (
@@ -35,7 +34,7 @@ export default function SearchBar({ onSubmit }) {
           // autofocus
           placeholder="Search movies"
           onChange={handleNameChange}
-          value={value}
+          value={query}
         />
       </form>
     </header>
