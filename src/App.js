@@ -15,12 +15,12 @@ export default function App() {
           <Home />
         </Route>
 
-        <Route exact>
+        <Route path="/movie" exact>
           <MoviesPage />
         </Route>
 
         <Route>
-          <Movie />
+          <Movie path="/movie/:movieId" />
         </Route>
       </Switch>
     </Container>

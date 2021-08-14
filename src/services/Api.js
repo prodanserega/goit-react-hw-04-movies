@@ -5,14 +5,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 axios.defaults.params = {
-  api_key: "e0f5a2b3f12c3f7ea9352edce7e33432",
-
-  page: 1,
+  api_key: "053386d3f650ced58f98586754740b55",
+  language: "en-US",
+  //page: 1,
 };
+
+const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
 
 async function getTrendingMovies() {
   const { data } = await axios
-    .get(`/trending/movie/day?`)
+    .get("/trending/movie/day")
     .then((data) => data)
     .catch(function (error) {
       toast.error(error);
@@ -20,9 +22,11 @@ async function getTrendingMovies() {
   return data;
 }
 
-async function getBySearchMovies(searchQuery, page = 1) {
+async function getBySearchMovies(searchQuery, page) {
   const { data } = await axios
-    .get(`/search/movie?`)
+    .get("/search/movie", {
+      params: { query: searchQuery, page },
+    })
     .then((data) => data)
     .catch(function (error) {
       toast.error(error);
@@ -30,15 +34,14 @@ async function getBySearchMovies(searchQuery, page = 1) {
   return data;
 }
 
-async function getMovieDetails(movieId) {
-  const { data } = await axios
-    .get(`/movie/${movieId}`)
-    .then((data) => data)
-    .catch(function (error) {
-      toast.error(error);
-    });
-  return data;
-}
+const getMovieDetails = async (movieId) => {
+  try {
+    const { data } = await axios.get(`/movie/${movieId}`);
+    return data;
+  } catch (error) {
+    return null;
+  }
+};
 
 async function getCastMovies(movieId) {
   const { data } = await axios
@@ -48,7 +51,7 @@ async function getCastMovies(movieId) {
   return data.cast;
 }
 
-async function getReviewsMovies(movieId, page = 1) {
+async function getReviewsMovies(movieId) {
   const { data } = await axios
     .get(`/movie/${movieId}/reviews`)
     .then((data) => data);
@@ -62,4 +65,5 @@ export {
   getCastMovies,
   getMovieDetails,
   getReviewsMovies,
+  BASE_IMAGE_URL,
 };

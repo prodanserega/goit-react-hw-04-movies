@@ -1,14 +1,15 @@
 import style from "../MovieCard/MovieCard.module.css";
+// import { BASE_IMAGE_URL } from "../../services/Api";
 
 const MovieCard = ({ movie }) => {
   return (
     <div>
-      <img
+      {/* <img
         className={style.img}
-        src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+        src={`${BASE_IMAGE_URL}${movie.poster_path}`}
         alt={movie.original_title}
         width="300"
-      />
+      /> */}
       <div className={style.info}>
         <h2>{movie.original_title}</h2>
         <p className={style.info_item}>
