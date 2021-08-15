@@ -25,6 +25,8 @@ const Movie = () => {
     getMovieDetails(movieId).then((movie) => setMovie(movie));
   }, [movieId]);
 
+  
+
   const onGoBack = () => {
     history.push(location?.state?.from ?? "/");
   };
@@ -63,10 +65,10 @@ const Movie = () => {
 
           <Suspense>
             <Switch>
-              <Route path={`${path}/cast`}>
+              <Route path="/movies/:movieId/cast">
                 <Cast />
               </Route>
-              <Route path={`${path}/reviews`}>
+              <Route path="/movies/:movieId/reviews">
                 <Reviews />
               </Route>
             </Switch>

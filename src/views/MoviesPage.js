@@ -22,7 +22,7 @@ const MoviesPage = () => {
       toast.success("Movies on your query");
     });
   }, [query]);
-  console.log(getBySearchMovies);
+  
   const onSubmit = (query) => {
     setQuery(query);
     setMovies([]);

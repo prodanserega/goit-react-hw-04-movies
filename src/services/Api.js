@@ -14,7 +14,7 @@ axios.defaults.params = {
 const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
 
 async function getTrendingMovies() {
-  const { data } = await axios
+  const {data}  = await axios
     .get("/trending/movie/day")
     .then((data) => data)
     .catch(function (error) {
@@ -44,6 +44,8 @@ async function getMovieDetails(movieId) {
     });
   return data;
 }
+
+
 
 async function getCastMovies(movieId) {
   const { data } = await axios
