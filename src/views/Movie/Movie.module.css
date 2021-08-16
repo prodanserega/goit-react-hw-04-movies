@@ -1,6 +1,7 @@
 .btn {
   margin-bottom: 15px;
   padding: 5px;
+  border-radius: 5%;
   border: 0;
   text-decoration: none;
   cursor: pointer;
@@ -9,4 +10,21 @@
 .btn:hover,
 .btn:focus {
   color: green;
+}
+
+.link {
+  text-decoration: none;
+  color: #2a363b;
+  margin-right: 15px;
+}
+
+.link:hover,
+.link:focus {
+  color: green;
+}
+
+.add_title {
+  margin-top: 25px;
+  color: green;
+  font-weight: 600;
 }

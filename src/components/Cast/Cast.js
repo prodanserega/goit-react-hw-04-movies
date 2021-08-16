@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getCastMovies } from "../../services/Api";
-
+import foto from "../../no_foto.jpg";
 import style from "../Cast/Cast.module.css";
 
 export default function Cast() {
@@ -24,12 +24,14 @@ export default function Cast() {
       {cast.map((actor) => {
         actor = {
           ...actor,
-          profile_path: actor.profile_path`https://image.tmdb.org/t/p/w200${actor.profile_path}`,
+          profile_path: actor.profile_path
+            ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
+            : foto,
         };
         return (
           <li key={actor.id} className={style.item}>
-            <img src={actor.profile_path} alt={actor.name} />
-            <p>{actor.name}</p>
+            <img src={actor.profile_path} alt={actor.name} width="150" />
+            <p className={style.name}>{actor.name}</p>
             <p>Character: {actor.character}</p>
           </li>
         );

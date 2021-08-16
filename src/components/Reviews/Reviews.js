@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getReviewsMovies } from "../../services/Api";
+import style from "../Reviews/Reviews.module.css";
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -20,7 +21,7 @@ export default function Reviews() {
     <ul>
       {reviews.map((review) => {
         return (
-          <li key={review.id}>
+          <li key={review.id} className={style.item}>
             <h4>Author: {review.author}</h4>
             <p>{review.content}</p>
           </li>

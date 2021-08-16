@@ -1,8 +1,13 @@
 .cast {
-  display: flex;
-  flex-wrap: wrap;
   list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 .item {
-  margin-right: 20px;
+  padding-right: 50px;
+}
+
+.name {
+  font-size: larger;
+  color: black;
 }

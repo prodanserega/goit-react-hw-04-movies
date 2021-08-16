@@ -19,13 +19,11 @@ const Movie = () => {
   const location = useLocation();
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
-  const { url, path } = useRouteMatch();
+  const { url } = useRouteMatch();
 
   useEffect(() => {
     getMovieDetails(movieId).then((movie) => setMovie(movie));
   }, [movieId]);
-
-  
 
   const onGoBack = () => {
     history.push(location?.state?.from ?? "/");
@@ -40,7 +38,7 @@ const Movie = () => {
         <>
           <div>
             <MovieCard movie={movie} />
-            <h4>Additional information</h4>
+            <h4 className={style.add_title}>Additional information:</h4>
             <NavLink
               to={{
                 pathname: `${url}/cast`,
