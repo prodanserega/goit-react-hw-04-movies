@@ -36,7 +36,7 @@ async function getBySearchMovies(searchQuery) {
 }
 
 async function getMovieDetails(movieId) {
-  const data = await axios
+  const {data} = await axios
     .get(`/movie/${movieId}`)
     .then((data) => data)
     .catch(function (error) {
