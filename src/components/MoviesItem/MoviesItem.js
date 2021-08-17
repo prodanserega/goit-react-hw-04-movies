@@ -8,8 +8,9 @@ const MovieItem = ({ movie }) => {
       <Link
         className={style.link}
         to={{
-          pathname: `/movies/${movie.id}`,
-          state: { from: useLocation() },
+          pathname: `movies/${movie.id}`,
+          state: { from: location },
+          label: "Back to Movies",
         }}
       >
         {movie.title}

@@ -27,15 +27,16 @@ const Movie = () => {
 
   const onGoBack = () => {
     history.push(location?.state?.from ?? "/");
+    return;
   };
 
   return (
     <>
-      <button type="button" onClick={onGoBack} className={style.btn}>
-        Go back
-      </button>
       {movie && (
         <>
+          <button type="button" onClick={onGoBack} className={style.btn}>
+            Go back
+          </button>
           <div>
             <MovieCard movie={movie} />
             <h4 className={style.add_title}>Additional information:</h4>
